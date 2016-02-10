@@ -12,7 +12,7 @@
 		23E6B7741C6AF3F8005383DA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23E6B7661C6AF3F8005383DA /* AppDelegate.swift */; };
 		23E6B7751C6AF3F8005383DA /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23E6B7681C6AF3F8005383DA /* ViewController.swift */; };
 		23E6B7761C6AF3F8005383DA /* MapOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23E6B76A1C6AF3F8005383DA /* MapOverlay.swift */; };
-		23E6B7771C6AF3F8005383DA /* MapOverlayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23E6B76B1C6AF3F8005383DA /* MapOverlayView.swift */; };
+		23E6B7771C6AF3F8005383DA /* MapOverlayRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23E6B76B1C6AF3F8005383DA /* MapOverlayRenderer.swift */; };
 		23E6B7781C6AF3F8005383DA /* MapPin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23E6B76C1C6AF3F8005383DA /* MapPin.swift */; };
 		23E6B7791C6AF3F8005383DA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 23E6B76E1C6AF3F8005383DA /* Assets.xcassets */; };
 		23E6B77A1C6AF3F8005383DA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 23E6B76F1C6AF3F8005383DA /* LaunchScreen.storyboard */; };
@@ -47,7 +47,7 @@
 		23E6B7661C6AF3F8005383DA /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		23E6B7681C6AF3F8005383DA /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		23E6B76A1C6AF3F8005383DA /* MapOverlay.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapOverlay.swift; sourceTree = "<group>"; };
-		23E6B76B1C6AF3F8005383DA /* MapOverlayView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapOverlayView.swift; sourceTree = "<group>"; };
+		23E6B76B1C6AF3F8005383DA /* MapOverlayRenderer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapOverlayRenderer.swift; sourceTree = "<group>"; };
 		23E6B76C1C6AF3F8005383DA /* MapPin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapPin.swift; sourceTree = "<group>"; };
 		23E6B76E1C6AF3F8005383DA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		23E6B7701C6AF3F8005383DA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -149,7 +149,7 @@
 			isa = PBXGroup;
 			children = (
 				23E6B76A1C6AF3F8005383DA /* MapOverlay.swift */,
-				23E6B76B1C6AF3F8005383DA /* MapOverlayView.swift */,
+				23E6B76B1C6AF3F8005383DA /* MapOverlayRenderer.swift */,
 				23E6B76C1C6AF3F8005383DA /* MapPin.swift */,
 			);
 			path = Models;
@@ -301,7 +301,7 @@
 				23E6B7751C6AF3F8005383DA /* ViewController.swift in Sources */,
 				23E6B7781C6AF3F8005383DA /* MapPin.swift in Sources */,
 				23E6B7741C6AF3F8005383DA /* AppDelegate.swift in Sources */,
-				23E6B7771C6AF3F8005383DA /* MapOverlayView.swift in Sources */,
+				23E6B7771C6AF3F8005383DA /* MapOverlayRenderer.swift in Sources */,
 				23E6B7761C6AF3F8005383DA /* MapOverlay.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

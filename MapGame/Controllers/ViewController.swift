@@ -30,6 +30,13 @@ class ViewController: UIViewController, MKMapViewDelegate {
             coordinate: initialLocation.coordinate)
         mapView.addAnnotation(annotation)
         
+        // Add test overlay
+        /*
+        TODO: get coordinates and boundingMapRect
+        let overlay = MapOverlay(coordinate: <#T##CLLocationCoordinate2D#>, boundingMapRect: <#T##MKMapRect#>)
+        mapView.addOverlay(overlay)
+        */
+        
         // Initial 3D Camera
         let mapCamera = MKMapCamera()
         mapCamera.centerCoordinate = initialLocation.coordinate
@@ -51,6 +58,7 @@ class ViewController: UIViewController, MKMapViewDelegate {
     }
 
     // MARK: MKMapView delegate functions
+    
     func mapView(mapView: MKMapView, viewForAnnotation annotation: MKAnnotation) -> MKAnnotationView? {
         if let annotation = annotation as? MapPin {
             let identifier = "pin"
@@ -67,6 +75,16 @@ class ViewController: UIViewController, MKMapViewDelegate {
                 view.rightCalloutAccessoryView = UIButton(type: .DetailDisclosure) as UIView
             }
             return view
+        }
+        return nil
+    }
+    
+    // TODO: is this the correct delegate function?
+    func mapView(mapView: MKMapView, rendererForOverlay overlay: MKOverlay!) -> MKOverlayRenderer! {
+        if overlay is MapOverlay {
+            let overlayImage = UIImage(named: "overlay_park")
+            let overlayView = MapOverlayRenderer(overlay: overlay, overlayImage: overlayImage!)
+            return overlayView
         }
         return nil
     }

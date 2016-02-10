@@ -9,7 +9,7 @@
 import UIKit
 import MapKit
 
-class MapOverlayView: MKOverlayRenderer {
+class MapOverlayRenderer: MKOverlayRenderer {
     var overlayImage: UIImage
     
     init(overlay: MKOverlay, overlayImage: UIImage) {
