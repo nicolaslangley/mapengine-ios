@@ -109,10 +109,9 @@ class ViewController: UIViewController, MKMapViewDelegate {
     
     func mapView(mapView: MKMapView, viewForAnnotation annotation: MKAnnotation) -> MKAnnotationView? {
         var annotationView = mapView.dequeueReusableAnnotationViewWithIdentifier(NSStringFromClass(DXAnnotationView))
-        
         if (annotationView == nil) {
-            let pinView = UIImageView(image: UIImage(named: "firstaid.png"))
-            let calloutView = NSBundle.mainBundle().loadNibNamed("CustomCalloutView", owner: self, options: nil).first as! UIView
+            let pinView = CustomAnnotationView(frame: CGRect(x: 0, y: 0, width: 30, height: 30)) as UIView
+            let calloutView = CustomCalloutView(frame: CGRect(x: 0, y: 0, width: 30, height: 10)) as UIView
             
             let annotationViewSettings = DXAnnotationSettings.defaultSettings()
             annotationViewSettings.calloutOffset = 5.0

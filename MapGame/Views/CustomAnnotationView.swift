@@ -7,13 +7,9 @@
 //
 
 import UIKit
-import MapKit
 
-class CustomAnnotationView: MKAnnotationView {
+class CustomAnnotationView: UIView {
     
-    class var reuseIdentifier: String { return "CustomAnnotationView" }
-    
-    // Required for MKAnnotationView
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
@@ -21,25 +17,7 @@ class CustomAnnotationView: MKAnnotationView {
     // Called when drawing the CustomAnnotationView
     override init(frame: CGRect) {
         super.init(frame: frame)
-    }
-    
-    override init(annotation: MKAnnotation?, reuseIdentifier: String?) {
-        super.init(annotation: annotation, reuseIdentifier: reuseIdentifier)
-        let customAnnotation = self.annotation as! CustomAnnotation
-        switch (customAnnotation.type) {
-        case .UnitFirstAid:
-            image = UIImage(named: "firstaid")
-        case .UnitFood:
-            image = UIImage(named: "food")
-        case .UnitRide:
-            image = UIImage(named: "ride")
-        default:
-            image = UIImage(named: "star")
-        }
-    }
-    
-    convenience init(annotation: MKAnnotation!) {
-        self.init(annotation: annotation, reuseIdentifier: CustomAnnotationView.reuseIdentifier)
-        self.canShowCallout = false;
+        let imageView = UIImageView(image: UIImage(named: "firstaid.png"))
+        self.addSubview(imageView)
     }
 }
