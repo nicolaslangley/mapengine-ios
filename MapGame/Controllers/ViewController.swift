@@ -31,13 +31,6 @@ class ViewController: UIViewController, MKMapViewDelegate {
             type: UnitType.UnitFirstAid)
         mapView.addAnnotation(annotation)
         
-        // Add test overlay
-        /*
-        TODO: get coordinates and boundingMapRect
-        let overlay = MapOverlay(coordinate: , boundingMapRect: )
-        mapView.addOverlay(overlay)
-        */
-        
         // Initial 3D Camera
         let mapCamera = MKMapCamera()
         mapCamera.centerCoordinate = initialLocation.coordinate
@@ -79,16 +72,5 @@ class ViewController: UIViewController, MKMapViewDelegate {
         }
         return nil
     }
-    
-    // ???: is this the correct delegate function?
-    func mapView(mapView: MKMapView, rendererForOverlay overlay: MKOverlay!) -> MKOverlayRenderer! {
-        if overlay is MapOverlay {
-            let overlayImage = UIImage(named: "overlay_park")
-            let overlayView = MapOverlayRenderer(overlay: overlay, overlayImage: overlayImage!)
-            return overlayView
-        }
-        return nil
-    }
-
 }
 
