@@ -25,15 +25,16 @@ class ViewController: UIViewController, MKMapViewDelegate {
         centerMapOnLocation(initialLocation)
         
         // Add test annotation
-        let annotation = MapPin(title: "Test",
+        let annotation = CustomAnnotation(coordinate: initialLocation.coordinate,
+            title: "Test",
             subtitle: "Test Sub",
-            coordinate: initialLocation.coordinate)
+            type: UnitType.UnitFirstAid)
         mapView.addAnnotation(annotation)
         
         // Add test overlay
         /*
         TODO: get coordinates and boundingMapRect
-        let overlay = MapOverlay(coordinate: <#T##CLLocationCoordinate2D#>, boundingMapRect: <#T##MKMapRect#>)
+        let overlay = MapOverlay(coordinate: , boundingMapRect: )
         mapView.addOverlay(overlay)
         */
         
@@ -60,16 +61,16 @@ class ViewController: UIViewController, MKMapViewDelegate {
     // MARK: MKMapView delegate functions
     
     func mapView(mapView: MKMapView, viewForAnnotation annotation: MKAnnotation) -> MKAnnotationView? {
-        if let annotation = annotation as? MapPin {
+        if let annotation = annotation as? CustomAnnotation {
             let identifier = "pin"
-            var view: MKPinAnnotationView
-            if let dequeuedView = mapView.dequeueReusableAnnotationViewWithIdentifier(identifier) as? MKPinAnnotationView {
+            var view: CustomAnnotationView
+            if let dequeuedView = mapView.dequeueReusableAnnotationViewWithIdentifier(identifier) as? CustomAnnotationView {
                 // Check if reusable annotation is available
                 dequeuedView.annotation = annotation
                 view = dequeuedView
             } else {
                 // Use vanilla MKAnnotationView
-                view = MKPinAnnotationView(annotation: annotation, reuseIdentifier: identifier)
+                view = CustomAnnotationView(annotation: annotation, reuseIdentifier: identifier)
                 view.canShowCallout = true
                 view.calloutOffset = CGPoint(x: -5, y: 5)
                 view.rightCalloutAccessoryView = UIButton(type: .DetailDisclosure) as UIView
@@ -79,7 +80,7 @@ class ViewController: UIViewController, MKMapViewDelegate {
         return nil
     }
     
-    // TODO: is this the correct delegate function?
+    // ???: is this the correct delegate function?
     func mapView(mapView: MKMapView, rendererForOverlay overlay: MKOverlay!) -> MKOverlayRenderer! {
         if overlay is MapOverlay {
             let overlayImage = UIImage(named: "overlay_park")
