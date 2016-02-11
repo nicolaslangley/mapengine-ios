@@ -33,7 +33,6 @@ class ViewController: UIViewController, MKMapViewDelegate {
             title: "Test",
             subtitle: "Test Sub",
             type: UnitType.UnitFirstAid)
-        self.currentAnnotation = annotation
         self.mapView.addAnnotation(annotation)
         
         let gestureRecognizer = UILongPressGestureRecognizer(target: self, action: "revealRegionDetailsWithLongPressOnMap:")
@@ -64,13 +63,13 @@ class ViewController: UIViewController, MKMapViewDelegate {
         
         self.currentAnnotation.coordinate = MKCoordinateForMapPoint(nextMapPoint)
         performSelector("updateAnnotationPosition", withObject: nil, afterDelay: 0.1)
-
     }
     
     // MARK: Helper map functions
     
     @IBAction func revealRegionDetailsWithLongPressOnMap(sender: UILongPressGestureRecognizer) {
         if sender.state != UIGestureRecognizerState.Began { return }
+        if currentAnnotation == nil { return }
         let touchLocation = sender.locationInView(self.mapView)
         let locationCoordinate = self.mapView.convertPoint(touchLocation, toCoordinateFromView: self.mapView)
         print("Tapped at lat: \(locationCoordinate.latitude) long: \(locationCoordinate.longitude)")
@@ -109,15 +108,14 @@ class ViewController: UIViewController, MKMapViewDelegate {
     
     func mapView(mapView: MKMapView, viewForAnnotation annotation: MKAnnotation) -> MKAnnotationView? {
         if let annotation = annotation as? CustomAnnotation {
-            let identifier = "custom"
             var view: CustomAnnotationView
-            if let dequeuedView = mapView.dequeueReusableAnnotationViewWithIdentifier(identifier) as? CustomAnnotationView {
+            if let dequeuedView = mapView.dequeueReusableAnnotationViewWithIdentifier(CustomAnnotationView.reuseIdentifier) as? CustomAnnotationView {
                 // Check if reusable annotation is available
                 dequeuedView.annotation = annotation
                 view = dequeuedView
             } else {
                 // Create new annotation
-                view = CustomAnnotationView(annotation: annotation, reuseIdentifier: identifier)
+                view = CustomAnnotationView(annotation: annotation)
                 view.canShowCallout = true
                 view.calloutOffset = CGPoint(x: -5, y: 5)
                 view.rightCalloutAccessoryView = UIButton(type: .DetailDisclosure) as UIView
@@ -125,6 +123,14 @@ class ViewController: UIViewController, MKMapViewDelegate {
             return view
         }
         return nil
+    }
+    
+    func mapView(mapView: MKMapView, didSelectAnnotationView view: MKAnnotationView) {
+        currentAnnotation = view.annotation as! CustomAnnotation
+    }
+    
+    func mapView(mapView: MKMapView, didDeselectAnnotationView view: MKAnnotationView) {
+        currentAnnotation = nil
     }
     
     func mapView(mapView: MKMapView, rendererForOverlay overlay: MKOverlay) -> MKOverlayRenderer {

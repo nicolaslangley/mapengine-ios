@@ -10,6 +10,9 @@ import UIKit
 import MapKit
 
 class CustomAnnotationView: MKAnnotationView {
+    
+    class var reuseIdentifier: String { return "CustomAnnotationView" }
+    
     // Required for MKAnnotationView
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -33,5 +36,10 @@ class CustomAnnotationView: MKAnnotationView {
         default:
             image = UIImage(named: "star")
         }
+    }
+    
+    convenience init(annotation: MKAnnotation!) {
+        self.init(annotation: annotation, reuseIdentifier: CustomAnnotationView.reuseIdentifier)
+        self.canShowCallout = false;
     }
 }
