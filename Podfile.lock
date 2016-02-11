@@ -1,0 +1,12 @@
+PODS:
+  - DXCustomCallout-ObjC (0.2.0)
+
+DEPENDENCIES:
+  - DXCustomCallout-ObjC (~> 0.2)
+
+SPEC CHECKSUMS:
+  DXCustomCallout-ObjC: fb223603ee148365de51c2d69bb10443943ff89b
+
+PODFILE CHECKSUM: cb8ea9205367a07f26f290859baf649b7a2b7202
+
+COCOAPODS: 1.0.0.beta.3
