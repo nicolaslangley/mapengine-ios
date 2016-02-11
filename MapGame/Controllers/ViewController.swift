@@ -12,7 +12,10 @@ import MapKit
 class ViewController: UIViewController, MKMapViewDelegate {
     
     let regionRadius: CLLocationDistance = 1000
-    var currentCoordinate: CLLocationCoordinate2D?
+    
+    var currentPathPolyline: MKPolyline!
+    var currentAnnotation: CustomAnnotation!
+    var currentAnnotationPosition = 0
 
     @IBOutlet weak var mapView: MKMapView!
     
@@ -23,7 +26,6 @@ class ViewController: UIViewController, MKMapViewDelegate {
         
         self.mapView.mapType = MKMapType.SatelliteFlyover
         let initialLocation = CLLocation(latitude: 21.282778, longitude: -157.829444) // Honolulu
-        currentCoordinate = initialLocation.coordinate
         centerMapOnLocation(initialLocation)
         
         // Add test annotation
@@ -31,9 +33,9 @@ class ViewController: UIViewController, MKMapViewDelegate {
             title: "Test",
             subtitle: "Test Sub",
             type: UnitType.UnitFirstAid)
-        mapView.addAnnotation(annotation)
+        self.currentAnnotation = annotation
+        self.mapView.addAnnotation(annotation)
         
-        // TODO: Determine how to retrieve destination based on tap and generate path
         let gestureRecognizer = UILongPressGestureRecognizer(target: self, action: "revealRegionDetailsWithLongPressOnMap:")
         self.view.addGestureRecognizer(gestureRecognizer)
         
@@ -52,32 +54,29 @@ class ViewController: UIViewController, MKMapViewDelegate {
     }
     
     func updateAnnotationPosition() {
-        // TODO: Make this conform to the CustomAnnotation class
-        /*
-        let step = 5
-        guard planeAnnotationPosition + step < flightpathPolyline.pointCount
+        let step = 1
+        guard currentAnnotationPosition + step < currentPathPolyline.pointCount
             else { return }
         
-        let points = flightpathPolyline.points()
-        self.planeAnnotationPosition += step
-        let nextMapPoint = points[planeAnnotationPosition]
+        let points = currentPathPolyline.points()
+        self.currentAnnotationPosition += step
+        let nextMapPoint = points[currentAnnotationPosition]
         
-        self.planeAnnotation.coordinate = MKCoordinateForMapPoint(nextMapPoint)
-        
-        performSelector("updatePlanePosition", withObject: nil, afterDelay: 0.03)
-        */
+        self.currentAnnotation.coordinate = MKCoordinateForMapPoint(nextMapPoint)
+        performSelector("updateAnnotationPosition", withObject: nil, afterDelay: 0.1)
+
     }
     
     // MARK: Helper map functions
     
     @IBAction func revealRegionDetailsWithLongPressOnMap(sender: UILongPressGestureRecognizer) {
         if sender.state != UIGestureRecognizerState.Began { return }
-        let touchLocation = sender.locationInView(mapView)
-        let locationCoordinate = mapView.convertPoint(touchLocation, toCoordinateFromView: mapView)
+        let touchLocation = sender.locationInView(self.mapView)
+        let locationCoordinate = self.mapView.convertPoint(touchLocation, toCoordinateFromView: self.mapView)
         print("Tapped at lat: \(locationCoordinate.latitude) long: \(locationCoordinate.longitude)")
         
         self.mapView.removeOverlays(self.mapView.overlays)
-        overlayMapRoute(currentCoordinate!, end: locationCoordinate)
+        overlayMapRoute(self.currentAnnotation.coordinate, end: locationCoordinate)
     }
     
     func overlayMapRoute(start: CLLocationCoordinate2D, end: CLLocationCoordinate2D) {
@@ -93,14 +92,17 @@ class ViewController: UIViewController, MKMapViewDelegate {
                 return
             }
             let route = response.routes.first
-            self.mapView.addOverlay((route?.polyline)!, level: MKOverlayLevel.AboveRoads)
+            self.currentPathPolyline = (route?.polyline)!
+            self.currentAnnotationPosition = 0
+            self.mapView.addOverlay(self.currentPathPolyline, level: MKOverlayLevel.AboveRoads)
+            self.updateAnnotationPosition()
         }
     }
     
     func centerMapOnLocation(location: CLLocation) {
         let coordinateRegion = MKCoordinateRegionMakeWithDistance(location.coordinate,
             regionRadius * 2.0, regionRadius * 2.0)
-        mapView.setRegion(coordinateRegion, animated: true)
+        self.mapView.setRegion(coordinateRegion, animated: true)
     }
 
     // MARK: MKMapViewDelegate functions
@@ -131,7 +133,7 @@ class ViewController: UIViewController, MKMapViewDelegate {
         }
         
         let renderer = MKPolylineRenderer(polyline: polyline)
-        renderer.lineWidth = 3.0
+        renderer.lineWidth = 1.0
         renderer.alpha = 0.5
         renderer.strokeColor = UIColor.blueColor()
         

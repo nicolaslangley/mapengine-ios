@@ -17,7 +17,7 @@ enum UnitType: Int {
 }
 
 class CustomAnnotation: NSObject, MKAnnotation {
-    var coordinate: CLLocationCoordinate2D
+    dynamic var coordinate: CLLocationCoordinate2D
     var title: String?
     var subtitle: String?
     var type: UnitType
