@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0A535997D9D501F1E0214AE5 /* Pods_MapGameUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BBDFD59CEC31499081D6A775 /* Pods_MapGameUITests.framework */; };
 		230584CB1C6ACED8001A8E4D /* MapGameTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 230584CA1C6ACED8001A8E4D /* MapGameTests.swift */; };
 		230584D61C6ACED8001A8E4D /* MapGameUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 230584D51C6ACED8001A8E4D /* MapGameUITests.swift */; };
 		238E24581C6C0F0D0007CE0D /* CustomAnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 238E24571C6C0F0D0007CE0D /* CustomAnnotationView.swift */; };
@@ -20,12 +19,12 @@
 		238E24691C6C10B90007CE0D /* ride@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 238E24611C6C10B90007CE0D /* ride@2x.png */; };
 		238E246A1C6C10B90007CE0D /* star.png in Resources */ = {isa = PBXBuildFile; fileRef = 238E24621C6C10B90007CE0D /* star.png */; };
 		238E246B1C6C10B90007CE0D /* star@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 238E24631C6C10B90007CE0D /* star@2x.png */; };
+		23C6EB1E1C6D1881001A9F9F /* CustomCalloutView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 23C6EB1D1C6D1881001A9F9F /* CustomCalloutView.xib */; };
 		23E6B7741C6AF3F8005383DA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23E6B7661C6AF3F8005383DA /* AppDelegate.swift */; };
 		23E6B7751C6AF3F8005383DA /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23E6B7681C6AF3F8005383DA /* ViewController.swift */; };
 		23E6B7791C6AF3F8005383DA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 23E6B76E1C6AF3F8005383DA /* Assets.xcassets */; };
 		23E6B77A1C6AF3F8005383DA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 23E6B76F1C6AF3F8005383DA /* LaunchScreen.storyboard */; };
 		23E6B77B1C6AF3F8005383DA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 23E6B7711C6AF3F8005383DA /* Main.storyboard */; };
-		2FB3674A756FDA9A66B4BE89 /* Pods_MapGameTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 87E2003AA827A6889C35610E /* Pods_MapGameTests.framework */; };
 		E8A828975181A0946DBC9A9D /* Pods_MapGame.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 90493C8330CB42C4FDC3CFD5 /* Pods_MapGame.framework */; };
 /* End PBXBuildFile section */
 
@@ -64,21 +63,18 @@
 		238E24611C6C10B90007CE0D /* ride@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ride@2x.png"; sourceTree = "<group>"; };
 		238E24621C6C10B90007CE0D /* star.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = star.png; sourceTree = "<group>"; };
 		238E24631C6C10B90007CE0D /* star@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "star@2x.png"; sourceTree = "<group>"; };
+		23C6EB1D1C6D1881001A9F9F /* CustomCalloutView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CustomCalloutView.xib; path = MapGame/Views/CustomCalloutView.xib; sourceTree = SOURCE_ROOT; };
 		23E6B7661C6AF3F8005383DA /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		23E6B7681C6AF3F8005383DA /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		23E6B76E1C6AF3F8005383DA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		23E6B7701C6AF3F8005383DA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		23E6B7721C6AF3F8005383DA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		23E6B7731C6AF3F8005383DA /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		57112A62B1A64B783543B9C3 /* Pods-MapGameTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MapGameTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-MapGameTests/Pods-MapGameTests.release.xcconfig"; sourceTree = "<group>"; };
 		87E2003AA827A6889C35610E /* Pods_MapGameTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MapGameTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		90493C8330CB42C4FDC3CFD5 /* Pods_MapGame.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MapGame.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		96E3E0CD5F1175E645811CFD /* Pods-MapGameUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MapGameUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-MapGameUITests/Pods-MapGameUITests.release.xcconfig"; sourceTree = "<group>"; };
 		9AFF3834304F51AFC05B3865 /* Pods-MapGame.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MapGame.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MapGame/Pods-MapGame.debug.xcconfig"; sourceTree = "<group>"; };
-		B21660BA1D25CDA5340CD9F3 /* Pods-MapGameUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MapGameUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MapGameUITests/Pods-MapGameUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		BBDFD59CEC31499081D6A775 /* Pods_MapGameUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MapGameUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DCEC728AC20A49D24259A5D8 /* Pods-MapGame.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MapGame.release.xcconfig"; path = "Pods/Target Support Files/Pods-MapGame/Pods-MapGame.release.xcconfig"; sourceTree = "<group>"; };
-		E6EC899BFC2431AFF60F7280 /* Pods-MapGameTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MapGameTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MapGameTests/Pods-MapGameTests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,7 +90,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2FB3674A756FDA9A66B4BE89 /* Pods_MapGameTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -102,7 +97,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0A535997D9D501F1E0214AE5 /* Pods_MapGameUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -216,6 +210,7 @@
 				23E6B76F1C6AF3F8005383DA /* LaunchScreen.storyboard */,
 				23E6B7711C6AF3F8005383DA /* Main.storyboard */,
 				23E6B7731C6AF3F8005383DA /* Info.plist */,
+				23C6EB1D1C6D1881001A9F9F /* CustomCalloutView.xib */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -235,10 +230,6 @@
 			children = (
 				9AFF3834304F51AFC05B3865 /* Pods-MapGame.debug.xcconfig */,
 				DCEC728AC20A49D24259A5D8 /* Pods-MapGame.release.xcconfig */,
-				E6EC899BFC2431AFF60F7280 /* Pods-MapGameTests.debug.xcconfig */,
-				57112A62B1A64B783543B9C3 /* Pods-MapGameTests.release.xcconfig */,
-				B21660BA1D25CDA5340CD9F3 /* Pods-MapGameUITests.debug.xcconfig */,
-				96E3E0CD5F1175E645811CFD /* Pods-MapGameUITests.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -270,12 +261,9 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 230584DD1C6ACED8001A8E4D /* Build configuration list for PBXNativeTarget "MapGameTests" */;
 			buildPhases = (
-				9FE5E0722795FBB874F3DB36 /* Check Pods Manifest.lock */,
 				230584C21C6ACED8001A8E4D /* Sources */,
 				230584C31C6ACED8001A8E4D /* Frameworks */,
 				230584C41C6ACED8001A8E4D /* Resources */,
-				9FE548E8FA5FAE611B341A78 /* Embed Pods Frameworks */,
-				3B2280E889288496F752F366 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -291,11 +279,9 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 230584E01C6ACED8001A8E4D /* Build configuration list for PBXNativeTarget "MapGameUITests" */;
 			buildPhases = (
-				4A179DDE7D54707376F44705 /* Check Pods Manifest.lock */,
 				230584CD1C6ACED8001A8E4D /* Sources */,
 				230584CE1C6ACED8001A8E4D /* Frameworks */,
 				230584CF1C6ACED8001A8E4D /* Resources */,
-				01A89AC78D5545E7C351DE3A /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -360,6 +346,7 @@
 				23E6B77B1C6AF3F8005383DA /* Main.storyboard in Resources */,
 				238E246A1C6C10B90007CE0D /* star.png in Resources */,
 				238E24671C6C10B90007CE0D /* food@2x.png in Resources */,
+				23C6EB1E1C6D1881001A9F9F /* CustomCalloutView.xib in Resources */,
 				238E24641C6C10B90007CE0D /* firstaid.png in Resources */,
 				23E6B7791C6AF3F8005383DA /* Assets.xcassets in Resources */,
 				238E24691C6C10B90007CE0D /* ride@2x.png in Resources */,
@@ -387,51 +374,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		01A89AC78D5545E7C351DE3A /* Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MapGameUITests/Pods-MapGameUITests-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		3B2280E889288496F752F366 /* Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MapGameTests/Pods-MapGameTests-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		4A179DDE7D54707376F44705 /* Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Check Pods Manifest.lock";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
-			showEnvVarsInLog = 0;
-		};
 		6C3201247145A2597A190385 /* Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -448,36 +390,6 @@
 			showEnvVarsInLog = 0;
 		};
 		7EB1348BACD363970F0DCC94 /* Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Check Pods Manifest.lock";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
-			showEnvVarsInLog = 0;
-		};
-		9FE548E8FA5FAE611B341A78 /* Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MapGameTests/Pods-MapGameTests-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		9FE5E0722795FBB874F3DB36 /* Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -665,6 +577,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.Hierarchy.MapGame;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "";
 			};
 			name = Debug;
 		};
@@ -678,12 +591,12 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.Hierarchy.MapGame;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "";
 			};
 			name = Release;
 		};
 		230584DE1C6ACED8001A8E4D /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = E6EC899BFC2431AFF60F7280 /* Pods-MapGameTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				INFOPLIST_FILE = MapGameTests/Info.plist;
@@ -696,7 +609,6 @@
 		};
 		230584DF1C6ACED8001A8E4D /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 57112A62B1A64B783543B9C3 /* Pods-MapGameTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				INFOPLIST_FILE = MapGameTests/Info.plist;
@@ -709,7 +621,6 @@
 		};
 		230584E11C6ACED8001A8E4D /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = B21660BA1D25CDA5340CD9F3 /* Pods-MapGameUITests.debug.xcconfig */;
 			buildSettings = {
 				INFOPLIST_FILE = MapGameUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -722,7 +633,6 @@
 		};
 		230584E21C6ACED8001A8E4D /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 96E3E0CD5F1175E645811CFD /* Pods-MapGameUITests.release.xcconfig */;
 			buildSettings = {
 				INFOPLIST_FILE = MapGameUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";

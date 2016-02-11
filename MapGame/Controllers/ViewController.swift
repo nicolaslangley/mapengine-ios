@@ -8,6 +8,7 @@
 
 import UIKit
 import MapKit
+import DXCustomCallout_ObjC
 
 class ViewController: UIViewController, MKMapViewDelegate {
     
@@ -107,22 +108,24 @@ class ViewController: UIViewController, MKMapViewDelegate {
     // MARK: MKMapViewDelegate functions
     
     func mapView(mapView: MKMapView, viewForAnnotation annotation: MKAnnotation) -> MKAnnotationView? {
-        if let annotation = annotation as? CustomAnnotation {
-            var view: CustomAnnotationView
-            if let dequeuedView = mapView.dequeueReusableAnnotationViewWithIdentifier(CustomAnnotationView.reuseIdentifier) as? CustomAnnotationView {
-                // Check if reusable annotation is available
-                dequeuedView.annotation = annotation
-                view = dequeuedView
-            } else {
-                // Create new annotation
-                view = CustomAnnotationView(annotation: annotation)
-                view.canShowCallout = true
-                view.calloutOffset = CGPoint(x: -5, y: 5)
-                view.rightCalloutAccessoryView = UIButton(type: .DetailDisclosure) as UIView
-            }
-            return view
+        var annotationView = mapView.dequeueReusableAnnotationViewWithIdentifier(NSStringFromClass(DXAnnotationView))
+        
+        if (annotationView == nil) {
+            let pinView = UIImageView(image: UIImage(named: "firstaid.png"))
+            let calloutView = NSBundle.mainBundle().loadNibNamed("CustomCalloutView", owner: self, options: nil).first as! UIView
+            
+            let annotationViewSettings = DXAnnotationSettings.defaultSettings()
+            annotationViewSettings.calloutOffset = 5.0
+            annotationViewSettings.shouldAddCalloutBorder = false
+            
+            annotationView = DXAnnotationView(annotation: annotation,
+                reuseIdentifier: NSStringFromClass(DXAnnotationView),
+                pinView: pinView,
+                calloutView: calloutView,
+                settings: annotationViewSettings)
         }
-        return nil
+        return annotationView
+
     }
     
     func mapView(mapView: MKMapView, didSelectAnnotationView view: MKAnnotationView) {
