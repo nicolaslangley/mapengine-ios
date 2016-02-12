@@ -20,6 +20,11 @@
 		238E246A1C6C10B90007CE0D /* star.png in Resources */ = {isa = PBXBuildFile; fileRef = 238E24621C6C10B90007CE0D /* star.png */; };
 		238E246B1C6C10B90007CE0D /* star@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 238E24631C6C10B90007CE0D /* star@2x.png */; };
 		23C6EB221C6D2041001A9F9F /* CustomCalloutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23C6EB211C6D2041001A9F9F /* CustomCalloutView.swift */; };
+		23C6EB241C6D3013001A9F9F /* MetalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23C6EB231C6D3013001A9F9F /* MetalView.swift */; };
+		23C6EB261C6D343F001A9F9F /* Shaders.metal in Sources */ = {isa = PBXBuildFile; fileRef = 23C6EB251C6D343F001A9F9F /* Shaders.metal */; };
+		23C6EB281C6D5988001A9F9F /* CustomOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23C6EB271C6D5988001A9F9F /* CustomOverlay.swift */; };
+		23C6EB2A1C6D5B55001A9F9F /* CustomOverlayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23C6EB291C6D5B55001A9F9F /* CustomOverlayView.swift */; };
+		23C6EB2C1C6D5BE4001A9F9F /* VCMapViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23C6EB2B1C6D5BE4001A9F9F /* VCMapViewDelegate.swift */; };
 		23E6B7741C6AF3F8005383DA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23E6B7661C6AF3F8005383DA /* AppDelegate.swift */; };
 		23E6B7751C6AF3F8005383DA /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23E6B7681C6AF3F8005383DA /* ViewController.swift */; };
 		23E6B7791C6AF3F8005383DA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 23E6B76E1C6AF3F8005383DA /* Assets.xcassets */; };
@@ -64,6 +69,11 @@
 		238E24621C6C10B90007CE0D /* star.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = star.png; sourceTree = "<group>"; };
 		238E24631C6C10B90007CE0D /* star@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "star@2x.png"; sourceTree = "<group>"; };
 		23C6EB211C6D2041001A9F9F /* CustomCalloutView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomCalloutView.swift; sourceTree = "<group>"; };
+		23C6EB231C6D3013001A9F9F /* MetalView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MetalView.swift; sourceTree = "<group>"; };
+		23C6EB251C6D343F001A9F9F /* Shaders.metal */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.metal; path = Shaders.metal; sourceTree = "<group>"; };
+		23C6EB271C6D5988001A9F9F /* CustomOverlay.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomOverlay.swift; sourceTree = "<group>"; };
+		23C6EB291C6D5B55001A9F9F /* CustomOverlayView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomOverlayView.swift; sourceTree = "<group>"; };
+		23C6EB2B1C6D5BE4001A9F9F /* VCMapViewDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VCMapViewDelegate.swift; sourceTree = "<group>"; };
 		23E6B7661C6AF3F8005383DA /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		23E6B7681C6AF3F8005383DA /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		23E6B76E1C6AF3F8005383DA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -148,6 +158,8 @@
 			children = (
 				238E24571C6C0F0D0007CE0D /* CustomAnnotationView.swift */,
 				23C6EB211C6D2041001A9F9F /* CustomCalloutView.swift */,
+				23C6EB231C6D3013001A9F9F /* MetalView.swift */,
+				23C6EB291C6D5B55001A9F9F /* CustomOverlayView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -191,6 +203,7 @@
 			isa = PBXGroup;
 			children = (
 				23E6B7681C6AF3F8005383DA /* ViewController.swift */,
+				23C6EB2B1C6D5BE4001A9F9F /* VCMapViewDelegate.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -199,6 +212,7 @@
 			isa = PBXGroup;
 			children = (
 				238E24591C6C0FAD0007CE0D /* CustomAnnotation.swift */,
+				23C6EB271C6D5988001A9F9F /* CustomOverlay.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -211,6 +225,7 @@
 				23E6B76F1C6AF3F8005383DA /* LaunchScreen.storyboard */,
 				23E6B7711C6AF3F8005383DA /* Main.storyboard */,
 				23E6B7731C6AF3F8005383DA /* Info.plist */,
+				23C6EB251C6D343F001A9F9F /* Shaders.metal */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -425,7 +440,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				23C6EB241C6D3013001A9F9F /* MetalView.swift in Sources */,
+				23C6EB261C6D343F001A9F9F /* Shaders.metal in Sources */,
+				23C6EB2A1C6D5B55001A9F9F /* CustomOverlayView.swift in Sources */,
+				23C6EB2C1C6D5BE4001A9F9F /* VCMapViewDelegate.swift in Sources */,
 				23E6B7751C6AF3F8005383DA /* ViewController.swift in Sources */,
+				23C6EB281C6D5988001A9F9F /* CustomOverlay.swift in Sources */,
 				23E6B7741C6AF3F8005383DA /* AppDelegate.swift in Sources */,
 				238E24581C6C0F0D0007CE0D /* CustomAnnotationView.swift in Sources */,
 				238E245A1C6C0FAD0007CE0D /* CustomAnnotation.swift in Sources */,
