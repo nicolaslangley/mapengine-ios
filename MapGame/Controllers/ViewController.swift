@@ -8,9 +8,8 @@
 
 import UIKit
 import MapKit
-import DXCustomCallout_ObjC
 
-class ViewController: UIViewController, MKMapViewDelegate {
+class ViewController: UIViewController {
     
     let regionRadius: CLLocationDistance = 1000
     
@@ -104,49 +103,5 @@ class ViewController: UIViewController, MKMapViewDelegate {
             regionRadius * 2.0, regionRadius * 2.0)
         self.mapView.setRegion(coordinateRegion, animated: true)
     }
-
-    // MARK: MKMapViewDelegate functions
-    
-    func mapView(mapView: MKMapView, viewForAnnotation annotation: MKAnnotation) -> MKAnnotationView? {
-        var annotationView = mapView.dequeueReusableAnnotationViewWithIdentifier(NSStringFromClass(DXAnnotationView))
-        if (annotationView == nil) {
-            let pinView = CustomAnnotationView(frame: CGRect(x: 0, y: 0, width: 30, height: 30)) as UIView
-            let calloutView = CustomCalloutView(frame: CGRect(x: 0, y: 0, width: 30, height: 10)) as UIView
-            
-            let annotationViewSettings = DXAnnotationSettings.defaultSettings()
-            annotationViewSettings.calloutOffset = 5.0
-            annotationViewSettings.shouldAddCalloutBorder = false
-            
-            annotationView = DXAnnotationView(annotation: annotation,
-                reuseIdentifier: NSStringFromClass(DXAnnotationView),
-                pinView: pinView,
-                calloutView: calloutView,
-                settings: annotationViewSettings)
-        }
-        return annotationView
-
-    }
-    
-    func mapView(mapView: MKMapView, didSelectAnnotationView view: MKAnnotationView) {
-        currentAnnotation = view.annotation as! CustomAnnotation
-    }
-    
-    func mapView(mapView: MKMapView, didDeselectAnnotationView view: MKAnnotationView) {
-        currentAnnotation = nil
-    }
-    
-    func mapView(mapView: MKMapView, rendererForOverlay overlay: MKOverlay) -> MKOverlayRenderer {
-        guard let polyline = overlay as? MKPolyline else {
-            return MKOverlayRenderer()
-        }
-        
-        let renderer = MKPolylineRenderer(polyline: polyline)
-        renderer.lineWidth = 1.0
-        renderer.alpha = 0.5
-        renderer.strokeColor = UIColor.blueColor()
-        
-        return renderer
-    }
-    
 }
 
