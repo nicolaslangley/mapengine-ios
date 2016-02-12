@@ -15,6 +15,7 @@ extension ViewController: MKMapViewDelegate {
         var annotationView = mapView.dequeueReusableAnnotationViewWithIdentifier(NSStringFromClass(DXAnnotationView))
         if (annotationView == nil) {
             let pinView = MetalView(frame: CGRect(x: 0, y: 0, width: 30, height: 30)) as UIView
+            // let pinView = UIImageView(image: UIImage(named: "firstaid.png"))
             let calloutView = CustomCalloutView(frame: CGRect(x: 0, y: 0, width: 30, height: 10)) as UIView
             
             let annotationViewSettings = DXAnnotationSettings.defaultSettings()
@@ -42,7 +43,16 @@ extension ViewController: MKMapViewDelegate {
     func mapView(mapView: MKMapView, rendererForOverlay overlay: MKOverlay) -> MKOverlayRenderer {
         
         if overlay is CustomOverlay {
+            // FIXME: Initializing MetalView here prevents map from rendering
+            //        Related to when rendererForOverlay is called?
+            //        viewForAnnotation works fine
             
+            // let overlayView = MetalView(frame: CGRect(x: 0, y: 0, width: 30, height: 30)) as UIView
+            // let renderer = CustomOverlayRenderer(overlay: overlay, overlayView: overlayView)
+            let overlayImage = UIImage(named: "firstaid.png")
+            let renderer = CustomOverlayRenderer(overlay: overlay, overlayImage: overlayImage!)
+            
+            return renderer
         } else if overlay is MKPolyline {
             guard let polyline = overlay as? MKPolyline else {
                 return MKOverlayRenderer()
@@ -55,7 +65,7 @@ extension ViewController: MKMapViewDelegate {
             
             return renderer
         }
-        
+        return MKOverlayRenderer()
     }
 
 

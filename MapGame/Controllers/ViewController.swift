@@ -35,6 +35,12 @@ class ViewController: UIViewController {
             type: UnitType.UnitFirstAid)
         self.mapView.addAnnotation(annotation)
         
+        /*
+        // Add test overlay
+        let overlay = CustomOverlay(coordinate: initialLocation.coordinate)
+        self.mapView.addOverlay(overlay)
+        */
+        
         let gestureRecognizer = UILongPressGestureRecognizer(target: self, action: "revealRegionDetailsWithLongPressOnMap:")
         self.view.addGestureRecognizer(gestureRecognizer)
         

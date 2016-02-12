@@ -10,6 +10,9 @@ import MetalKit
 
 class MetalView: MTKView {
     
+    // TODO: Add 3D rendering and clean up pipeline
+    // http://www.raywenderlich.com/81399/ios-8-metal-tutorial-swift-moving-to-3d
+    
     var vertexBuffer: MTLBuffer! = nil
     var pipelineState: MTLRenderPipelineState! = nil
     var commandQueue: MTLCommandQueue! = nil

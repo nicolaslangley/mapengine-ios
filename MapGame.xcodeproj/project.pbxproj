@@ -23,7 +23,7 @@
 		23C6EB241C6D3013001A9F9F /* MetalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23C6EB231C6D3013001A9F9F /* MetalView.swift */; };
 		23C6EB261C6D343F001A9F9F /* Shaders.metal in Sources */ = {isa = PBXBuildFile; fileRef = 23C6EB251C6D343F001A9F9F /* Shaders.metal */; };
 		23C6EB281C6D5988001A9F9F /* CustomOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23C6EB271C6D5988001A9F9F /* CustomOverlay.swift */; };
-		23C6EB2A1C6D5B55001A9F9F /* CustomOverlayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23C6EB291C6D5B55001A9F9F /* CustomOverlayView.swift */; };
+		23C6EB2A1C6D5B55001A9F9F /* CustomOverlayRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23C6EB291C6D5B55001A9F9F /* CustomOverlayRenderer.swift */; };
 		23C6EB2C1C6D5BE4001A9F9F /* VCMapViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23C6EB2B1C6D5BE4001A9F9F /* VCMapViewDelegate.swift */; };
 		23E6B7741C6AF3F8005383DA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23E6B7661C6AF3F8005383DA /* AppDelegate.swift */; };
 		23E6B7751C6AF3F8005383DA /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23E6B7681C6AF3F8005383DA /* ViewController.swift */; };
@@ -72,7 +72,7 @@
 		23C6EB231C6D3013001A9F9F /* MetalView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MetalView.swift; sourceTree = "<group>"; };
 		23C6EB251C6D343F001A9F9F /* Shaders.metal */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.metal; path = Shaders.metal; sourceTree = "<group>"; };
 		23C6EB271C6D5988001A9F9F /* CustomOverlay.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomOverlay.swift; sourceTree = "<group>"; };
-		23C6EB291C6D5B55001A9F9F /* CustomOverlayView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomOverlayView.swift; sourceTree = "<group>"; };
+		23C6EB291C6D5B55001A9F9F /* CustomOverlayRenderer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomOverlayRenderer.swift; sourceTree = "<group>"; };
 		23C6EB2B1C6D5BE4001A9F9F /* VCMapViewDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VCMapViewDelegate.swift; sourceTree = "<group>"; };
 		23E6B7661C6AF3F8005383DA /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		23E6B7681C6AF3F8005383DA /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -159,7 +159,7 @@
 				238E24571C6C0F0D0007CE0D /* CustomAnnotationView.swift */,
 				23C6EB211C6D2041001A9F9F /* CustomCalloutView.swift */,
 				23C6EB231C6D3013001A9F9F /* MetalView.swift */,
-				23C6EB291C6D5B55001A9F9F /* CustomOverlayView.swift */,
+				23C6EB291C6D5B55001A9F9F /* CustomOverlayRenderer.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -442,7 +442,7 @@
 			files = (
 				23C6EB241C6D3013001A9F9F /* MetalView.swift in Sources */,
 				23C6EB261C6D343F001A9F9F /* Shaders.metal in Sources */,
-				23C6EB2A1C6D5B55001A9F9F /* CustomOverlayView.swift in Sources */,
+				23C6EB2A1C6D5B55001A9F9F /* CustomOverlayRenderer.swift in Sources */,
 				23C6EB2C1C6D5BE4001A9F9F /* VCMapViewDelegate.swift in Sources */,
 				23E6B7751C6AF3F8005383DA /* ViewController.swift in Sources */,
 				23C6EB281C6D5988001A9F9F /* CustomOverlay.swift in Sources */,
