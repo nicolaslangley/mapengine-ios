@@ -7,6 +7,7 @@
 //
 
 import MapKit
+import MetalKit
 import DXCustomCallout_ObjC
 
 extension ViewController: MKMapViewDelegate {
@@ -44,8 +45,8 @@ extension ViewController: MKMapViewDelegate {
         
         if overlay is CustomOverlay {
             print("MapViewDelegate rendererForOverlay function called")
-            let overlayView = MetalView(frame: CGRect(x: 0, y: 0, width: 30, height: 30)) as UIView
-            let renderer = CustomOverlayRenderer(overlay: overlay, overlayView: overlayView)
+            let overlayView = MetalView(frame: CGRect(x: 0, y: 0, width: 30, height: 30)) as MTKView
+            let renderer = MetalOverlayRenderer(overlay: overlay, overlayView: overlayView)
 
             /* Image Overlay Code
             let overlayImage = UIImage(named: "firstaid.png")
