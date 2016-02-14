@@ -8,15 +8,26 @@
 
 import Foundation
 import MetalKit
+import GLKit
 
 class Node {
     
     let name: String
     var vertexCount: Int
     var vertexBuffer: MTLBuffer
+    var uniformBuffer: MTLBuffer?
     var device: MTLDevice
     
-    init(name: String, vertices: Array<Vertex>, device: MTLDevice){
+    var positionX:Float = 0.0
+    var positionY:Float = 0.0
+    var positionZ:Float = 0.0
+    
+    var rotationX:Float = 0.0
+    var rotationY:Float = 0.0
+    var rotationZ:Float = 0.0
+    var scale:Float     = 1.0
+    
+    init(name: String, vertices: Array<Vertex>, device: MTLDevice) {
         var vertexData = Array<Float>()
         for vertex in vertices{
             vertexData += vertex.floatBuffer()
@@ -43,6 +54,14 @@ class Node {
         let renderEncoder = renderEncoderOpt
         renderEncoder.setRenderPipelineState(pipelineState)
         renderEncoder.setVertexBuffer(vertexBuffer, offset: 0, atIndex: 0)
+       
+        // FIXME: (1) Continuously allocating memory each frame is expensive and not recommended in production apps
+        var nodeModelMatrix = self.modelMatrix()
+        uniformBuffer = device.newBufferWithLength(sizeof(Float)*16, options: .CPUCacheModeDefaultCache)
+        let bufferPointer = uniformBuffer?.contents()
+        memcpy(bufferPointer!, &nodeModelMatrix.m, sizeof(Float)*16)
+        renderEncoder.setVertexBuffer(self.uniformBuffer, offset: 0, atIndex: 1)
+        
         renderEncoder.drawPrimitives(.Triangle, vertexStart: 0, vertexCount: 3, instanceCount: 1)
         renderEncoder.endEncoding()
         
@@ -50,4 +69,13 @@ class Node {
         commandBuffer.commit()
     }
     
+    func modelMatrix() -> GLKMatrix4 {
+        var matrix = GLKMatrix4()
+        matrix = GLKMatrix4Translate(matrix, positionX, positionY, positionZ)
+        matrix = GLKMatrix4Rotate(matrix, rotationX, 1, 0, 0)
+        matrix = GLKMatrix4Rotate(matrix, rotationY, 0, 1, 0)
+        matrix = GLKMatrix4Rotate(matrix, rotationZ, 0, 0, 1)
+        matrix = GLKMatrix4Scale(matrix, scale, scale, scale)
+        return matrix
+    }
 }

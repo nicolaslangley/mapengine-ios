@@ -17,24 +17,33 @@ struct VertexIn
 
 struct VertexOut
 {
-    float4 position [[position]];  //1
+    float4 position [[ position ]];  //1
     float4 color;
 };
 
-vertex VertexOut basic_vertex(const device VertexIn* vertex_array [[buffer(0)]],
-                              unsigned int vid [[vertex_id]])
+struct Uniforms{
+    float4x4 modelMatrix;
+};
+
+vertex VertexOut basic_vertex(const device VertexIn* vertex_array [[ buffer(0) ]],
+                              const device Uniforms&  uniforms    [[ buffer(1) ]],
+                              unsigned int vid [[ vertex_id ]])
 {
-    VertexIn VertexIn = vertex_array[vid];
+    // float4x4 mv_Matrix = uniforms.modelMatrix;
     
+    VertexIn VertexIn = vertex_array[vid];
     VertexOut VertexOut;
+    
+    // FIXME: (2) Uniforms not being applied properly
+    //VertexOut.position = mv_Matrix * float4(VertexIn.position,1);
     VertexOut.position = float4(VertexIn.position,1);
     VertexOut.color = VertexIn.color;
     
     return VertexOut;
 }
 
-fragment half4 basic_fragment(VertexOut interpolated [[stage_in]])
+fragment half4 basic_fragment(VertexOut interpolated [[ stage_in ]])
 {
-    return half4(interpolated.color[0], interpolated.color[1], interpolated.color[2], interpolated.color[3]); //2
+    return half4(interpolated.color[0], interpolated.color[1], interpolated.color[2], interpolated.color[3]);
 }
 

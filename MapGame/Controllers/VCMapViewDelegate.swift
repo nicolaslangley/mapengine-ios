@@ -15,7 +15,6 @@ extension ViewController: MKMapViewDelegate {
     func mapView(mapView: MKMapView, viewForAnnotation annotation: MKAnnotation) -> MKAnnotationView? {
         var annotationView = mapView.dequeueReusableAnnotationViewWithIdentifier(NSStringFromClass(DXAnnotationView))
         if (annotationView == nil) {
-            print("MapViewDelegate viewForAnnotation function called")
             let metalView = MetalView(frame: CGRect(x: 0, y: 0, width: 30, height: 30)) as UIView
             let calloutView = CustomCalloutView(frame: CGRect(x: 0, y: 0, width: 30, height: 10)) as UIView
             

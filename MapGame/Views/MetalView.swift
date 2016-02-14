@@ -7,6 +7,7 @@
 //
 
 import MetalKit
+import GLKit
 
 class MetalView: MTKView {
     
@@ -37,6 +38,9 @@ class MetalView: MTKView {
         
         createPipelineState()
         objectToDraw = Triangle(device: self.device!)
+//        objectToDraw.positionX = -0.25
+//        objectToDraw.rotationZ = GLKMathDegreesToRadians(45)
+//        objectToDraw.scale = 0.5
         commandQueue = device?.newCommandQueue()
     }
     

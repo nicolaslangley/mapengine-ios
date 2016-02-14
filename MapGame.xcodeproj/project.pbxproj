@@ -13,6 +13,7 @@
 		2321AC641C71382D0001C1CB /* Node.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2321AC631C71382D0001C1CB /* Node.swift */; };
 		2321AC661C71388D0001C1CB /* Vertex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2321AC651C71388D0001C1CB /* Vertex.swift */; };
 		2321AC681C7139D10001C1CB /* Triangle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2321AC671C7139D10001C1CB /* Triangle.swift */; };
+		2321AC6A1C713C600001C1CB /* Cube.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2321AC691C713C600001C1CB /* Cube.swift */; };
 		238E24581C6C0F0D0007CE0D /* CustomAnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 238E24571C6C0F0D0007CE0D /* CustomAnnotationView.swift */; };
 		238E245A1C6C0FAD0007CE0D /* CustomAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 238E24591C6C0FAD0007CE0D /* CustomAnnotation.swift */; };
 		238E24641C6C10B90007CE0D /* firstaid.png in Resources */ = {isa = PBXBuildFile; fileRef = 238E245C1C6C10B90007CE0D /* firstaid.png */; };
@@ -66,6 +67,7 @@
 		2321AC631C71382D0001C1CB /* Node.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Node.swift; sourceTree = "<group>"; };
 		2321AC651C71388D0001C1CB /* Vertex.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Vertex.swift; sourceTree = "<group>"; };
 		2321AC671C7139D10001C1CB /* Triangle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Triangle.swift; sourceTree = "<group>"; };
+		2321AC691C713C600001C1CB /* Cube.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Cube.swift; sourceTree = "<group>"; };
 		238E24571C6C0F0D0007CE0D /* CustomAnnotationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomAnnotationView.swift; sourceTree = "<group>"; };
 		238E24591C6C0FAD0007CE0D /* CustomAnnotation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomAnnotation.swift; sourceTree = "<group>"; };
 		238E245C1C6C10B90007CE0D /* firstaid.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = firstaid.png; sourceTree = "<group>"; };
@@ -225,6 +227,7 @@
 				2321AC631C71382D0001C1CB /* Node.swift */,
 				2321AC651C71388D0001C1CB /* Vertex.swift */,
 				2321AC671C7139D10001C1CB /* Triangle.swift */,
+				2321AC691C713C600001C1CB /* Cube.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -463,6 +466,7 @@
 				2321AC661C71388D0001C1CB /* Vertex.swift in Sources */,
 				2321AC621C7134BF0001C1CB /* MetalOverlayRenderer.swift in Sources */,
 				23E6B7741C6AF3F8005383DA /* AppDelegate.swift in Sources */,
+				2321AC6A1C713C600001C1CB /* Cube.swift in Sources */,
 				238E24581C6C0F0D0007CE0D /* CustomAnnotationView.swift in Sources */,
 				238E245A1C6C0FAD0007CE0D /* CustomAnnotation.swift in Sources */,
 				23C6EB221C6D2041001A9F9F /* CustomCalloutView.swift in Sources */,
