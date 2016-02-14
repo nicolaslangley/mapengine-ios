@@ -10,7 +10,7 @@ import MetalKit
 
 class MetalView: MTKView {
     
-    // TODO: Add 3D rendering and clean up pipeline
+    // TODO: (1) Add 3D rendering and clean up pipeline
     // http://www.raywenderlich.com/81399/ios-8-metal-tutorial-swift-moving-to-3d
     
     var vertexBuffer: MTLBuffer! = nil
@@ -29,9 +29,14 @@ class MetalView: MTKView {
     }
     
     func metalSetup() {
+
+        self.device = MTLCreateSystemDefaultDevice()
         self.colorPixelFormat = .BGRA8Unorm
         self.framebufferOnly = true
-        self.device = MTLCreateSystemDefaultDevice()
+        // FIXME: (1) Try setting code to update on demand
+        //            paused must be set to YES and enableSetNeedsDisplay must be set to NO
+        self.paused = true
+        self.enableSetNeedsDisplay = true
         createPipelineState()
         let vertexData:[Float] = [
             0.0, 1.0, 0.0,
@@ -83,7 +88,6 @@ class MetalView: MTKView {
     }
     
     override func drawRect(rect: CGRect) {
-        // Called by draw() function
         render()
     }
     

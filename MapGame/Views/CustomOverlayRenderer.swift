@@ -24,6 +24,7 @@ class CustomOverlayRenderer: MKOverlayRenderer {
     }
     
     override func drawMapRect(mapRect: MKMapRect, zoomScale: MKZoomScale, inContext context: CGContext) {
+        print("Calling drawMapRect()")
         if (overlayView != nil) {
             overlayImage = convertViewToImage(overlayView!)
         }
@@ -38,8 +39,12 @@ class CustomOverlayRenderer: MKOverlayRenderer {
     }
     
     func convertViewToImage(view: UIView) -> UIImage {
+        print("Calling convertViewToImage")
         UIGraphicsBeginImageContextWithOptions(view.bounds.size, true, 0)
-        view.drawViewHierarchyInRect(view.bounds, afterScreenUpdates: true)
+        
+        // FIXME: (1) MetalView is not being rendered to context properly - black only
+        //            This crashes when afterScreenUpdates: true
+        view.drawViewHierarchyInRect(view.bounds, afterScreenUpdates: false)
         let image = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
         return image
