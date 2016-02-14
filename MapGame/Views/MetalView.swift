@@ -29,14 +29,12 @@ class MetalView: MTKView {
     }
     
     func metalSetup() {
-
         self.device = MTLCreateSystemDefaultDevice()
         self.colorPixelFormat = .BGRA8Unorm
         self.framebufferOnly = true
-        // FIXME: (1) Try setting code to update on demand
-        //            paused must be set to YES and enableSetNeedsDisplay must be set to NO
-        self.paused = true
-        self.enableSetNeedsDisplay = true
+        self.paused = false
+        self.enableSetNeedsDisplay = false
+        
         createPipelineState()
         let vertexData:[Float] = [
             0.0, 1.0, 0.0,

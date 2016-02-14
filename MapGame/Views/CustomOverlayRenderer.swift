@@ -11,7 +11,7 @@ import MapKit
 
 class CustomOverlayRenderer: MKOverlayRenderer {
     var overlayImage: UIImage?
-    var overlayView: UIView?
+    var overlayView: UIView!
     
     init(overlay: MKOverlay, overlayImage: UIImage) {
         self.overlayImage = overlayImage
@@ -24,9 +24,10 @@ class CustomOverlayRenderer: MKOverlayRenderer {
     }
     
     override func drawMapRect(mapRect: MKMapRect, zoomScale: MKZoomScale, inContext context: CGContext) {
-        print("Calling drawMapRect()")
         if (overlayView != nil) {
-            overlayImage = convertViewToImage(overlayView!)
+            if let metalView = overlayView as? MetalView {
+                overlayImage = convertMTLViewToImage(metalView)
+            }
         }
         let imageReference = overlayImage!.CGImage
         
@@ -38,15 +39,17 @@ class CustomOverlayRenderer: MKOverlayRenderer {
         CGContextDrawImage(context, theRect, imageReference)
     }
     
-    func convertViewToImage(view: UIView) -> UIImage {
-        print("Calling convertViewToImage")
-        UIGraphicsBeginImageContextWithOptions(view.bounds.size, true, 0)
-        
-        // FIXME: (1) MetalView is not being rendered to context properly - black only
-        //            This crashes when afterScreenUpdates: true
-        view.drawViewHierarchyInRect(view.bounds, afterScreenUpdates: false)
-        let image = UIGraphicsGetImageFromCurrentImageContext()
-        UIGraphicsEndImageContext()
+    
+    func convertMTLViewToImage(view: MetalView) -> UIImage {
+        let texture = view.currentDrawable!.texture
+        let textureCIImage = CIImage(MTLTexture: texture, options: nil)
+        let textureCGImage = convertCIImageToCGImage(textureCIImage)
+        let image = UIImage(CGImage: textureCGImage)
         return image
+    }
+    
+    func convertCIImageToCGImage(inputImage: CIImage) -> CGImage! {
+        let context = CIContext(options: nil)
+        return context.createCGImage(inputImage, fromRect: inputImage.extent)
     }
 }
