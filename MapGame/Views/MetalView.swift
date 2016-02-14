@@ -13,7 +13,7 @@ class MetalView: MTKView {
     // TODO: (1) Add 3D rendering and clean up pipeline
     // http://www.raywenderlich.com/81399/ios-8-metal-tutorial-swift-moving-to-3d
     
-    var vertexBuffer: MTLBuffer! = nil
+    var objectToDraw: Node!
     var pipelineState: MTLRenderPipelineState! = nil
     var commandQueue: MTLCommandQueue! = nil
     var timer: CADisplayLink! = nil
@@ -36,11 +36,7 @@ class MetalView: MTKView {
         self.enableSetNeedsDisplay = false
         
         createPipelineState()
-        let vertexData:[Float] = [
-            0.0, 1.0, 0.0,
-            -1.0, -1.0, 0.0,
-            1.0, -1.0, 0.0]
-        createVertexBuffer(vertexData)
+        objectToDraw = Triangle(device: self.device!)
         commandQueue = device?.newCommandQueue()
     }
     
@@ -62,27 +58,12 @@ class MetalView: MTKView {
     }
     
     func createVertexBuffer(vertexData: [Float]) {
-        let dataSize = vertexData.count * sizeofValue(vertexData[0])
-        vertexBuffer = device!.newBufferWithBytes(vertexData, length: dataSize, options: .CPUCacheModeDefaultCache)
     }
     
     func render() {
-        let renderPassDescriptor = MTLRenderPassDescriptor()
         let layer = self.layer as! CAMetalLayer
         let drawable = layer.nextDrawable()
-        renderPassDescriptor.colorAttachments[0].texture = drawable!.texture
-        renderPassDescriptor.colorAttachments[0].loadAction = .Clear
-        renderPassDescriptor.colorAttachments[0].clearColor = MTLClearColor(red: 0.0, green: 104.0/255.0, blue: 5.0/255.0, alpha: 1.0)
-        let commandBuffer = commandQueue.commandBuffer()
-        let renderEncoderOpt = commandBuffer.renderCommandEncoderWithDescriptor(renderPassDescriptor)
-        let renderEncoder = renderEncoderOpt
-        renderEncoder.setRenderPipelineState(pipelineState)
-        renderEncoder.setVertexBuffer(vertexBuffer, offset: 0, atIndex: 0)
-        renderEncoder.drawPrimitives(.Triangle, vertexStart: 0, vertexCount: 3, instanceCount: 1)
-        renderEncoder.endEncoding()
-        
-        commandBuffer.presentDrawable(drawable!)
-        commandBuffer.commit()
+        objectToDraw.render(commandQueue, pipelineState: pipelineState, drawable: drawable!, clearColor: nil)
     }
     
     override func drawRect(rect: CGRect) {

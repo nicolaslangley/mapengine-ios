@@ -55,6 +55,8 @@ class ViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+   
+    // TODO: (2) Add update position function and movement capability for overlays
     
     func updateAnnotationPosition() {
         let step = 1
