@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		230584CB1C6ACED8001A8E4D /* MapGameTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 230584CA1C6ACED8001A8E4D /* MapGameTests.swift */; };
 		230584D61C6ACED8001A8E4D /* MapGameUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 230584D51C6ACED8001A8E4D /* MapGameUITests.swift */; };
+		2321AC621C7134BF0001C1CB /* MetalOverlayRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2321AC611C7134BF0001C1CB /* MetalOverlayRenderer.swift */; };
 		238E24581C6C0F0D0007CE0D /* CustomAnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 238E24571C6C0F0D0007CE0D /* CustomAnnotationView.swift */; };
 		238E245A1C6C0FAD0007CE0D /* CustomAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 238E24591C6C0FAD0007CE0D /* CustomAnnotation.swift */; };
 		238E24641C6C10B90007CE0D /* firstaid.png in Resources */ = {isa = PBXBuildFile; fileRef = 238E245C1C6C10B90007CE0D /* firstaid.png */; };
@@ -23,7 +24,7 @@
 		23C6EB241C6D3013001A9F9F /* MetalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23C6EB231C6D3013001A9F9F /* MetalView.swift */; };
 		23C6EB261C6D343F001A9F9F /* Shaders.metal in Sources */ = {isa = PBXBuildFile; fileRef = 23C6EB251C6D343F001A9F9F /* Shaders.metal */; };
 		23C6EB281C6D5988001A9F9F /* CustomOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23C6EB271C6D5988001A9F9F /* CustomOverlay.swift */; };
-		23C6EB2A1C6D5B55001A9F9F /* CustomOverlayRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23C6EB291C6D5B55001A9F9F /* CustomOverlayRenderer.swift */; };
+		23C6EB2A1C6D5B55001A9F9F /* ImageOverlayRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23C6EB291C6D5B55001A9F9F /* ImageOverlayRenderer.swift */; };
 		23C6EB2C1C6D5BE4001A9F9F /* VCMapViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23C6EB2B1C6D5BE4001A9F9F /* VCMapViewDelegate.swift */; };
 		23E6B7741C6AF3F8005383DA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23E6B7661C6AF3F8005383DA /* AppDelegate.swift */; };
 		23E6B7751C6AF3F8005383DA /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23E6B7681C6AF3F8005383DA /* ViewController.swift */; };
@@ -58,6 +59,7 @@
 		230584D11C6ACED8001A8E4D /* MapGameUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MapGameUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		230584D51C6ACED8001A8E4D /* MapGameUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapGameUITests.swift; sourceTree = "<group>"; };
 		230584D71C6ACED8001A8E4D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2321AC611C7134BF0001C1CB /* MetalOverlayRenderer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MetalOverlayRenderer.swift; sourceTree = "<group>"; };
 		238E24571C6C0F0D0007CE0D /* CustomAnnotationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomAnnotationView.swift; sourceTree = "<group>"; };
 		238E24591C6C0FAD0007CE0D /* CustomAnnotation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomAnnotation.swift; sourceTree = "<group>"; };
 		238E245C1C6C10B90007CE0D /* firstaid.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = firstaid.png; sourceTree = "<group>"; };
@@ -72,7 +74,7 @@
 		23C6EB231C6D3013001A9F9F /* MetalView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MetalView.swift; sourceTree = "<group>"; };
 		23C6EB251C6D343F001A9F9F /* Shaders.metal */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.metal; path = Shaders.metal; sourceTree = "<group>"; };
 		23C6EB271C6D5988001A9F9F /* CustomOverlay.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomOverlay.swift; sourceTree = "<group>"; };
-		23C6EB291C6D5B55001A9F9F /* CustomOverlayRenderer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomOverlayRenderer.swift; sourceTree = "<group>"; };
+		23C6EB291C6D5B55001A9F9F /* ImageOverlayRenderer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageOverlayRenderer.swift; sourceTree = "<group>"; };
 		23C6EB2B1C6D5BE4001A9F9F /* VCMapViewDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VCMapViewDelegate.swift; sourceTree = "<group>"; };
 		23E6B7661C6AF3F8005383DA /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		23E6B7681C6AF3F8005383DA /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -159,7 +161,8 @@
 				238E24571C6C0F0D0007CE0D /* CustomAnnotationView.swift */,
 				23C6EB211C6D2041001A9F9F /* CustomCalloutView.swift */,
 				23C6EB231C6D3013001A9F9F /* MetalView.swift */,
-				23C6EB291C6D5B55001A9F9F /* CustomOverlayRenderer.swift */,
+				23C6EB291C6D5B55001A9F9F /* ImageOverlayRenderer.swift */,
+				2321AC611C7134BF0001C1CB /* MetalOverlayRenderer.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -442,10 +445,11 @@
 			files = (
 				23C6EB241C6D3013001A9F9F /* MetalView.swift in Sources */,
 				23C6EB261C6D343F001A9F9F /* Shaders.metal in Sources */,
-				23C6EB2A1C6D5B55001A9F9F /* CustomOverlayRenderer.swift in Sources */,
+				23C6EB2A1C6D5B55001A9F9F /* ImageOverlayRenderer.swift in Sources */,
 				23C6EB2C1C6D5BE4001A9F9F /* VCMapViewDelegate.swift in Sources */,
 				23E6B7751C6AF3F8005383DA /* ViewController.swift in Sources */,
 				23C6EB281C6D5988001A9F9F /* CustomOverlay.swift in Sources */,
+				2321AC621C7134BF0001C1CB /* MetalOverlayRenderer.swift in Sources */,
 				23E6B7741C6AF3F8005383DA /* AppDelegate.swift in Sources */,
 				238E24581C6C0F0D0007CE0D /* CustomAnnotationView.swift in Sources */,
 				238E245A1C6C0FAD0007CE0D /* CustomAnnotation.swift in Sources */,
