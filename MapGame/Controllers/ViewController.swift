@@ -22,6 +22,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        
         self.mapView.delegate = self // Current ViewController is the MapDelegate
         
         self.mapView.mapType = MKMapType.SatelliteFlyover
@@ -38,6 +39,15 @@ class ViewController: UIViewController {
         // Add test overlay
         let overlay = CustomOverlay(coordinate: initialLocation.coordinate)
         self.mapView.addOverlay(overlay)
+       
+        let secondCoord = CLLocationCoordinate2D(latitude: 21.28, longitude: -157.829444)
+        let annotation2 = CustomAnnotation(coordinate: secondCoord,
+            title: "Test",
+            subtitle: "Test Sub",
+            type: UnitType.UnitFirstAid)
+        self.mapView.addAnnotation(annotation2)
+        let overlay2 = CustomOverlay(coordinate: secondCoord)
+        self.mapView.addOverlay(overlay2)
         
         let gestureRecognizer = UILongPressGestureRecognizer(target: self, action: "revealRegionDetailsWithLongPressOnMap:")
         self.view.addGestureRecognizer(gestureRecognizer)
@@ -80,7 +90,7 @@ class ViewController: UIViewController {
         let locationCoordinate = self.mapView.convertPoint(touchLocation, toCoordinateFromView: self.mapView)
         print("Tapped at lat: \(locationCoordinate.latitude) long: \(locationCoordinate.longitude)")
         
-        self.mapView.removeOverlays(self.mapView.overlays)
+//        self.mapView.removeOverlays(self.mapView.overlays)
         overlayMapRoute(self.currentAnnotation.coordinate, end: locationCoordinate)
     }
     

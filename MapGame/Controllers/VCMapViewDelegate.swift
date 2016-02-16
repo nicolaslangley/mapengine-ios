@@ -46,11 +46,6 @@ extension ViewController: MKMapViewDelegate {
             print("MapViewDelegate rendererForOverlay function called")
             let overlayView = MetalView(frame: CGRect(x: 0, y: 0, width: 30, height: 30)) as MTKView
             let renderer = MetalOverlayRenderer(overlay: overlay, overlayView: overlayView)
-
-            /* Image Overlay Code
-            let overlayImage = UIImage(named: "firstaid.png")
-            let renderer = CustomOverlayRenderer(overlay: overlay, overlayImage: overlayImage!)
-            */
             
             return renderer
         } else if overlay is MKPolyline {

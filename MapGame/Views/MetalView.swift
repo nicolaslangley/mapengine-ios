@@ -11,13 +11,9 @@ import GLKit
 
 class MetalView: MTKView {
     
-    // TODO: (1) Add 3D rendering and clean up pipeline
-    // http://www.raywenderlich.com/81399/ios-8-metal-tutorial-swift-moving-to-3d
-    
     var objectToDraw: Node!
     var pipelineState: MTLRenderPipelineState! = nil
     var commandQueue: MTLCommandQueue! = nil
-    var timer: CADisplayLink! = nil
     
     required init(coder: NSCoder) {
         super.init(coder: coder)
@@ -37,10 +33,7 @@ class MetalView: MTKView {
         self.enableSetNeedsDisplay = false
         
         createPipelineState()
-        objectToDraw = Triangle(device: self.device!)
-//        objectToDraw.positionX = -0.25
-//        objectToDraw.rotationZ = GLKMathDegreesToRadians(45)
-//        objectToDraw.scale = 0.5
+        objectToDraw = Cube(device: self.device!)
         commandQueue = device?.newCommandQueue()
     }
     
@@ -61,17 +54,14 @@ class MetalView: MTKView {
         }
     }
     
-    func createVertexBuffer(vertexData: [Float]) {
-    }
-    
-    func render() {
+    override func drawRect(rect: CGRect) {
         let layer = self.layer as! CAMetalLayer
         let drawable = layer.nextDrawable()
+        
+        objectToDraw.positionX = -0.25
+        objectToDraw.rotationZ = GLKMathDegreesToRadians(45)
+        objectToDraw.scale = 0.9
         objectToDraw.render(commandQueue, pipelineState: pipelineState, drawable: drawable!, clearColor: nil)
-    }
-    
-    override func drawRect(rect: CGRect) {
-        render()
     }
     
     

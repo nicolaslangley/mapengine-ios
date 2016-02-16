@@ -17,11 +17,12 @@ struct VertexIn
 
 struct VertexOut
 {
-    float4 position [[ position ]];  //1
+    float4 position [[ position ]];
     float4 color;
 };
 
-struct Uniforms{
+struct Uniforms
+{
     float4x4 modelMatrix;
 };
 
@@ -29,14 +30,11 @@ vertex VertexOut basic_vertex(const device VertexIn* vertex_array [[ buffer(0) ]
                               const device Uniforms&  uniforms    [[ buffer(1) ]],
                               unsigned int vid [[ vertex_id ]])
 {
-    // float4x4 mv_Matrix = uniforms.modelMatrix;
-    
+    float4x4 mv_Matrix = uniforms.modelMatrix;
     VertexIn VertexIn = vertex_array[vid];
     VertexOut VertexOut;
     
-    // FIXME: (2) Uniforms not being applied properly
-    //VertexOut.position = mv_Matrix * float4(VertexIn.position,1);
-    VertexOut.position = float4(VertexIn.position,1);
+    VertexOut.position = mv_Matrix * float4(VertexIn.position,1);
     VertexOut.color = VertexIn.color;
     
     return VertexOut;

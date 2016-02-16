@@ -59,7 +59,7 @@ class Node {
         var nodeModelMatrix = self.modelMatrix()
         uniformBuffer = device.newBufferWithLength(sizeof(Float)*16, options: .CPUCacheModeDefaultCache)
         let bufferPointer = uniformBuffer?.contents()
-        memcpy(bufferPointer!, &nodeModelMatrix.m, sizeof(Float)*16)
+        memcpy(bufferPointer!, &(nodeModelMatrix.m), sizeof(Float)*16)
         renderEncoder.setVertexBuffer(self.uniformBuffer, offset: 0, atIndex: 1)
         
         renderEncoder.drawPrimitives(.Triangle, vertexStart: 0, vertexCount: 3, instanceCount: 1)
@@ -70,7 +70,7 @@ class Node {
     }
     
     func modelMatrix() -> GLKMatrix4 {
-        var matrix = GLKMatrix4()
+        var matrix = GLKMatrix4Identity
         matrix = GLKMatrix4Translate(matrix, positionX, positionY, positionZ)
         matrix = GLKMatrix4Rotate(matrix, rotationX, 1, 0, 0)
         matrix = GLKMatrix4Rotate(matrix, rotationY, 0, 1, 0)
