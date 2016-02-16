@@ -82,6 +82,7 @@ class ViewController: UIViewController {
     }
     
     // MARK: Helper map functions
+    // TODO: (3) Add selection for map overlays
     
     @IBAction func revealRegionDetailsWithLongPressOnMap(sender: UILongPressGestureRecognizer) {
         if sender.state != UIGestureRecognizerState.Began { return }
@@ -89,8 +90,10 @@ class ViewController: UIViewController {
         let touchLocation = sender.locationInView(self.mapView)
         let locationCoordinate = self.mapView.convertPoint(touchLocation, toCoordinateFromView: self.mapView)
         print("Tapped at lat: \(locationCoordinate.latitude) long: \(locationCoordinate.longitude)")
-        
-//        self.mapView.removeOverlays(self.mapView.overlays)
+       
+        if (self.currentPathPolyline != nil) {
+            self.mapView.removeOverlay(self.currentPathPolyline)
+        }
         overlayMapRoute(self.currentAnnotation.coordinate, end: locationCoordinate)
     }
     
