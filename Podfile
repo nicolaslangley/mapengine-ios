@@ -5,7 +5,7 @@ use_frameworks!
 # ignore all warnings from all pods
 inhibit_all_warnings!
 
-target "MapGame" do
+target "MapEngine" do
     pod 'DXCustomCallout-ObjC', '~> 0.2'
 end
 

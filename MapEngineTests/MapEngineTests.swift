@@ -7,9 +7,9 @@
 //
 
 import XCTest
-@testable import MapGame
+@testable import MapEngine
 
-class MapGameTests: XCTestCase {
+class MapEngineTests: XCTestCase {
     
     override func setUp() {
         super.setUp()

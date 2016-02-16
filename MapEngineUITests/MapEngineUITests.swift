@@ -8,7 +8,7 @@
 
 import XCTest
 
-class MapGameUITests: XCTestCase {
+class MapEngineUITests: XCTestCase {
         
     override func setUp() {
         super.setUp()
