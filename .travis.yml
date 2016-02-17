@@ -1,0 +1,13 @@
+language: objective-c
+
+branches:
+     only:
+          - master
+
+     xcode_project: MapEngine.xcodeproj
+     xcode_scheme: MapEngineTests
+     osx_image: xcode6.4
+     xcode_sdk: iphonesimulator8.4 
+
+     script:
+         - xcodebuild clean build test -project MapEngine.xcodeproj -scheme MapEngineTests
