@@ -33,7 +33,8 @@ class CustomOverlay: NSObject, MKOverlay {
                 fabs(topLeft.y - bottomLeft.y))
         }
     }
-    
+
+
     init(coordinate: CLLocationCoordinate2D) {
         self.coordinate = coordinate
         let boundarySize = 0.0003
