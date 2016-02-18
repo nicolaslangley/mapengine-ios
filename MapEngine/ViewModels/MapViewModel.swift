@@ -81,6 +81,8 @@ class MapViewModel: NSObject {
         let nextMapPoint = points[self.currentOverlayPosition]
 
         self.currentOverlay.coordinate = MKCoordinateForMapPoint(nextMapPoint)
+        // TODO: Trigger a re-render of the overlay
+        //       What is the best way to do this without referencing controller or view?
         performSelector("updateOverlayPosition", withObject: nil, afterDelay: 0.1)
     }
 
