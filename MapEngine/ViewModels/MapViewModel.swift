@@ -11,7 +11,7 @@ import MapKit
 class MapViewModel: NSObject {
     
     // TODO: (1) Update to MVVM and add ReactiveCocoa for value observation
-    var currentPathPolyline: MKPolyline!
+    var currentPathPolyline: MKPolyline = MKPolyline()
     var currentAnnotation: CustomAnnotation!
     var currentAnnotationPosition = 0
     var currentOverlay: CustomOverlay!
@@ -32,12 +32,35 @@ class MapViewModel: NSObject {
         self.mapCamera.heading = 45;
     }
     
-    func updateCoordinateRegion(location: CLLocation) {
+    func centerMapOnLocation(location: CLLocation, centeringCallback: () -> Void) {
         let regionRadius: CLLocationDistance = 1000
         self.coordinateRegion = MKCoordinateRegionMakeWithDistance(location.coordinate,
             regionRadius * 2.0, regionRadius * 2.0)
+        centeringCallback()
     }
     
+    func overlayMapRoute(start: CLLocationCoordinate2D, end: CLLocationCoordinate2D, overlayCallback: () -> Void) {
+        let request = MKDirectionsRequest()
+        request.transportType = MKDirectionsTransportType.Automobile
+        request.source = MKMapItem(placemark: MKPlacemark(coordinate: start, addressDictionary: nil))
+        request.destination = MKMapItem(placemark: MKPlacemark(coordinate: end, addressDictionary: nil))
+        
+        let directions = MKDirections(request: request)
+        directions.calculateDirectionsWithCompletionHandler { response, error in
+            guard let response = response else {
+                print("Directions error: \(error)")
+                return
+            }
+            let route = response.routes.first
+            self.currentPathPolyline = (route?.polyline)!
+            self.currentAnnotationPosition = 0
+            overlayCallback()
+            self.updateAnnotationPosition()
+        }
+        
+    }
+    
+    // TODO: (2) Add update position function and movement capability for overlays
     func updateAnnotationPosition() {
         let step = 1
         guard self.currentAnnotationPosition + step < self.currentPathPolyline.pointCount
