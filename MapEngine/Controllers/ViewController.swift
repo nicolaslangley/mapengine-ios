@@ -53,7 +53,10 @@ class ViewController: UIViewController {
         self.mapViewModel.setupCamera(initialLocation.coordinate)
         self.mapView.camera = self.mapViewModel.mapCamera;
 
-        let gestureRecognizer = UILongPressGestureRecognizer(target: self, action: "revealRegionDetailsWithLongPressOnMap:")
+        let tapRecognizer = UITapGestureRecognizer(target: self, action: "handleTapOnMap:")
+        self.view.addGestureRecognizer(tapRecognizer)
+
+        let gestureRecognizer = UILongPressGestureRecognizer(target: self, action: "handleLongPressOnMap:")
         self.view.addGestureRecognizer(gestureRecognizer)
     }
 
@@ -65,18 +68,44 @@ class ViewController: UIViewController {
     // TODO: Add selection for map overlays
     //       Combine overlays and annotations?
     //       This is handled in the MKMapViewDelegate extension
-    @IBAction func revealRegionDetailsWithLongPressOnMap(sender: UILongPressGestureRecognizer) {
+    @IBAction func handleLongPressOnMap(sender: UILongPressGestureRecognizer) {
         if sender.state != UIGestureRecognizerState.Began { return }
         if self.mapViewModel.currentAnnotation == nil { return }
         let touchLocation = sender.locationInView(self.mapView)
         let locationCoordinate = self.mapView.convertPoint(touchLocation, toCoordinateFromView: self.mapView)
-        print("Tapped at lat: \(locationCoordinate.latitude) long: \(locationCoordinate.longitude)")
-       
+        print("Long press at lat: \(locationCoordinate.latitude) long: \(locationCoordinate.longitude)")
+
         self.mapView.removeOverlay(self.mapViewModel.currentPathPolyline)
         self.mapViewModel.overlayMapRoute(self.mapViewModel.currentAnnotation.coordinate, end: locationCoordinate) {
             () -> Void in
             self.mapView.addOverlay(self.mapViewModel.currentPathPolyline, level: MKOverlayLevel.AboveRoads)
         }
+    }
+
+    @IBAction func handleTapOnMap(sender: UITapGestureRecognizer) {
+        if sender.state != .Ended { return }
+        let touchLocation = sender.locationInView(self.mapView)
+        let locationCoordinate = self.mapView.convertPoint(touchLocation, toCoordinateFromView: self.mapView)
+        print("Tapped at lat: \(locationCoordinate.latitude) long: \(locationCoordinate.longitude)")
+        let tapPoint = MKMapPointForCoordinate(locationCoordinate)
+
+        for overlay in self.mapViewModel.overlays {
+            let overlayMapRect = overlay.boundingMapRect
+            if MKMapRectContainsPoint(overlayMapRect, tapPoint) {
+                self.mapViewModel.selectOverlay(overlay)
+                print("Overlay Selected")
+            }
+        }
+    }
+
+    func MKMapRectForCoordinateRegion(region:MKCoordinateRegion) -> MKMapRect {
+        let topLeft = CLLocationCoordinate2D(latitude: region.center.latitude + (region.span.latitudeDelta/2), longitude: region.center.longitude - (region.span.longitudeDelta/2))
+        let bottomRight = CLLocationCoordinate2D(latitude: region.center.latitude - (region.span.latitudeDelta/2), longitude: region.center.longitude + (region.span.longitudeDelta/2))
+
+        let a = MKMapPointForCoordinate(topLeft)
+        let b = MKMapPointForCoordinate(bottomRight)
+
+        return MKMapRect(origin: MKMapPoint(x:min(a.x,b.x), y:min(a.y,b.y)), size: MKMapSize(width: abs(a.x-b.x), height: abs(a.y-b.y)))
     }
 }
 

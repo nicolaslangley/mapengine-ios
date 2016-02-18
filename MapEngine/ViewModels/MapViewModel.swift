@@ -23,7 +23,7 @@ class MapViewModel: NSObject {
     var coordinateRegion: MKCoordinateRegion!
     var mapType: MKMapType = MKMapType.SatelliteFlyover // Set this in the constructor
 
-    // TODO: Take arguments for camera setup(
+    // TODO: Take arguments for camera setup
     func setupCamera(centerCoordinate: CLLocationCoordinate2D) {
         self.mapCamera = MKMapCamera()
         self.mapCamera.centerCoordinate = centerCoordinate
@@ -84,7 +84,7 @@ class MapViewModel: NSObject {
         performSelector("updateOverlayPosition", withObject: nil, afterDelay: 0.1)
     }
 
-    // TODO: (2) Add update position function and movement capability for overlays
+    // TODO: Add update position function and movement capability for overlays
     func updateAnnotationPosition() {
         let step = 1
         guard self.currentAnnotationPosition + step < self.currentPathPolyline.pointCount
@@ -97,5 +97,10 @@ class MapViewModel: NSObject {
         self.currentAnnotation.coordinate = MKCoordinateForMapPoint(nextMapPoint)
         performSelector("updateAnnotationPosition", withObject: nil, afterDelay: 0.1)
     }
-    
+
+    func selectOverlay(overlay: CustomOverlay) {
+        self.currentOverlay = overlay
+    }
+
+
 }
