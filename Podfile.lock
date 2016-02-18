@@ -1,12 +1,27 @@
 PODS:
   - DXCustomCallout-ObjC (0.2.0)
+  - ReactiveCocoa (4.0.1):
+    - ReactiveCocoa/UI (= 4.0.1)
+    - Result (~> 1.0.2)
+  - ReactiveCocoa/Core (4.0.1):
+    - ReactiveCocoa/no-arc
+    - Result (~> 1.0.2)
+  - ReactiveCocoa/no-arc (4.0.1):
+    - Result (~> 1.0.2)
+  - ReactiveCocoa/UI (4.0.1):
+    - ReactiveCocoa/Core
+    - Result (~> 1.0.2)
+  - Result (1.0.2)
 
 DEPENDENCIES:
   - DXCustomCallout-ObjC (~> 0.2)
+  - ReactiveCocoa (~> 4.0)
 
 SPEC CHECKSUMS:
   DXCustomCallout-ObjC: fb223603ee148365de51c2d69bb10443943ff89b
+  ReactiveCocoa: f7011630aee4deeb16352fcb1b50d6bde9db4f90
+  Result: dd3dd71af3fa2e262f1a999e14fba2c25ec14f16
 
-PODFILE CHECKSUM: f252837965112bede8f5cbda01f483f2e82bfe0d
+PODFILE CHECKSUM: 45f251019d663d4d044dc8bfc473b1b62c784ad4
 
 COCOAPODS: 1.0.0.beta.3

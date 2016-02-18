@@ -33,11 +33,11 @@ extension ViewController: MKMapViewDelegate {
     }
     
     func mapView(mapView: MKMapView, didSelectAnnotationView view: MKAnnotationView) {
-        currentAnnotation = view.annotation as! CustomAnnotation
+        self.mapViewModel.currentAnnotation = view.annotation as! CustomAnnotation
     }
     
     func mapView(mapView: MKMapView, didDeselectAnnotationView view: MKAnnotationView) {
-        currentAnnotation = nil
+        self.mapViewModel.currentAnnotation = nil
     }
     
     func mapView(mapView: MKMapView, rendererForOverlay overlay: MKOverlay) -> MKOverlayRenderer {

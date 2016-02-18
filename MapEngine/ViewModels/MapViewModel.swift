@@ -11,7 +11,6 @@ import MapKit
 class MapViewModel: NSObject {
     
     // TODO: (1) Update to MVVM and add ReactiveCocoa for value observation
-    
     var currentPathPolyline: MKPolyline!
     var currentAnnotation: CustomAnnotation!
     var currentAnnotationPosition = 0
@@ -23,7 +22,21 @@ class MapViewModel: NSObject {
     
     var mapCamera: MKMapCamera!
     var coordinateRegion: MKCoordinateRegion!
-    var mapType: MKMapType!
+    var mapType: MKMapType = MKMapType.SatelliteFlyover // Set this in the constructor
+    
+    func setupCamera(centerCoordinate: CLLocationCoordinate2D) {
+        self.mapCamera = MKMapCamera()
+        self.mapCamera.centerCoordinate = centerCoordinate
+        self.mapCamera.pitch = 45;
+        self.mapCamera.altitude = 500;
+        self.mapCamera.heading = 45;
+    }
+    
+    func updateCoordinateRegion(location: CLLocation) {
+        let regionRadius: CLLocationDistance = 1000
+        self.coordinateRegion = MKCoordinateRegionMakeWithDistance(location.coordinate,
+            regionRadius * 2.0, regionRadius * 2.0)
+    }
     
     func updateAnnotationPosition() {
         let step = 1

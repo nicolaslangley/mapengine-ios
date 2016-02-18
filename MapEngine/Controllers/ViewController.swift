@@ -10,22 +10,18 @@ import UIKit
 import MapKit
 
 class ViewController: UIViewController {
-    
-    let regionRadius: CLLocationDistance = 1000
-    
-    var currentPathPolyline: MKPolyline!
-    var currentAnnotation: CustomAnnotation!
-    var currentAnnotationPosition = 0
 
     @IBOutlet weak var mapView: MKMapView!
+    var mapViewModel: MapViewModel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        self.mapViewModel = MapViewModel() // Create ModelView for MVVM
         
         self.mapView.delegate = self // Current ViewController is the MapDelegate
         
-        self.mapView.mapType = MKMapType.SatelliteFlyover
+        self.mapView.mapType = self.mapViewModel.mapType
         let initialLocation = CLLocation(latitude: 21.282778, longitude: -157.829444) // Honolulu
         centerMapOnLocation(initialLocation)
         
@@ -34,31 +30,30 @@ class ViewController: UIViewController {
             title: "Test",
             subtitle: "Test Sub",
             type: UnitType.UnitFirstAid)
-        self.mapView.addAnnotation(annotation)
-        
         // Add test overlay
         let overlay = CustomOverlay(coordinate: initialLocation.coordinate)
-        self.mapView.addOverlay(overlay)
+        
+        self.mapViewModel.currentAnnotation = annotation
+        self.mapView.addAnnotation(self.mapViewModel.currentAnnotation)
+        self.mapViewModel.currentOverlay = overlay
+        self.mapView.addOverlay(self.mapViewModel.currentOverlay)
+        
+        // Initial 3D Camera
+        self.mapViewModel.setupCamera(initialLocation.coordinate)
+        self.mapView.camera = self.mapViewModel.mapCamera;
        
-        let secondCoord = CLLocationCoordinate2D(latitude: 21.28, longitude: -157.829444)
-        let annotation2 = CustomAnnotation(coordinate: secondCoord,
-            title: "Test",
-            subtitle: "Test Sub",
-            type: UnitType.UnitFirstAid)
-        self.mapView.addAnnotation(annotation2)
-        let overlay2 = CustomOverlay(coordinate: secondCoord)
-        self.mapView.addOverlay(overlay2)
+//        let secondCoord = CLLocationCoordinate2D(latitude: 21.28, longitude: -157.829444)
+//        let annotation2 = CustomAnnotation(coordinate: secondCoord,
+//            title: "Test",
+//            subtitle: "Test Sub",
+//            type: UnitType.UnitFirstAid)
+//        self.mapView.addAnnotation(annotation2)
+//        let overlay2 = CustomOverlay(coordinate: secondCoord)
+//        self.mapView.addOverlay(overlay2)
         
         let gestureRecognizer = UILongPressGestureRecognizer(target: self, action: "revealRegionDetailsWithLongPressOnMap:")
         self.view.addGestureRecognizer(gestureRecognizer)
         
-        // Initial 3D Camera
-        let mapCamera = MKMapCamera()
-        mapCamera.centerCoordinate = initialLocation.coordinate
-        mapCamera.pitch = 45;
-        mapCamera.altitude = 500;
-        mapCamera.heading = 45;
-        self.mapView.camera = mapCamera;
     }
 
     override func didReceiveMemoryWarning() {
@@ -67,17 +62,18 @@ class ViewController: UIViewController {
     }
    
     // TODO: (2) Add update position function and movement capability for overlays
+    // TODO: (4) Move updateAnnotationPosition function to MapViewModel class
     
     func updateAnnotationPosition() {
         let step = 1
-        guard currentAnnotationPosition + step < currentPathPolyline.pointCount
+        guard self.mapViewModel.currentAnnotationPosition + step < self.mapViewModel.currentPathPolyline.pointCount
             else { return }
         
-        let points = currentPathPolyline.points()
-        self.currentAnnotationPosition += step
-        let nextMapPoint = points[currentAnnotationPosition]
+        let points = self.mapViewModel.currentPathPolyline.points()
+        self.mapViewModel.currentAnnotationPosition += step
+        let nextMapPoint = points[self.mapViewModel.currentAnnotationPosition]
         
-        self.currentAnnotation.coordinate = MKCoordinateForMapPoint(nextMapPoint)
+        self.mapViewModel.currentAnnotation.coordinate = MKCoordinateForMapPoint(nextMapPoint)
         performSelector("updateAnnotationPosition", withObject: nil, afterDelay: 0.1)
     }
     
@@ -86,15 +82,14 @@ class ViewController: UIViewController {
     
     @IBAction func revealRegionDetailsWithLongPressOnMap(sender: UILongPressGestureRecognizer) {
         if sender.state != UIGestureRecognizerState.Began { return }
-        if currentAnnotation == nil { return }
         let touchLocation = sender.locationInView(self.mapView)
         let locationCoordinate = self.mapView.convertPoint(touchLocation, toCoordinateFromView: self.mapView)
         print("Tapped at lat: \(locationCoordinate.latitude) long: \(locationCoordinate.longitude)")
        
-        if (self.currentPathPolyline != nil) {
-            self.mapView.removeOverlay(self.currentPathPolyline)
+        if (self.mapViewModel.currentPathPolyline != nil) {
+            self.mapView.removeOverlay(self.mapViewModel.currentPathPolyline)
         }
-        overlayMapRoute(self.currentAnnotation.coordinate, end: locationCoordinate)
+        overlayMapRoute(self.mapViewModel.currentAnnotation.coordinate, end: locationCoordinate)
     }
     
     func overlayMapRoute(start: CLLocationCoordinate2D, end: CLLocationCoordinate2D) {
@@ -110,17 +105,16 @@ class ViewController: UIViewController {
                 return
             }
             let route = response.routes.first
-            self.currentPathPolyline = (route?.polyline)!
-            self.currentAnnotationPosition = 0
-            self.mapView.addOverlay(self.currentPathPolyline, level: MKOverlayLevel.AboveRoads)
+            self.mapViewModel.currentPathPolyline = (route?.polyline)!
+            self.mapViewModel.currentAnnotationPosition = 0
+            self.mapView.addOverlay(self.mapViewModel.currentPathPolyline, level: MKOverlayLevel.AboveRoads)
             self.updateAnnotationPosition()
         }
     }
     
     func centerMapOnLocation(location: CLLocation) {
-        let coordinateRegion = MKCoordinateRegionMakeWithDistance(location.coordinate,
-            regionRadius * 2.0, regionRadius * 2.0)
-        self.mapView.setRegion(coordinateRegion, animated: true)
+        self.mapViewModel.updateCoordinateRegion(location)
+        self.mapView.setRegion(self.mapViewModel.coordinateRegion, animated: true)
     }
 }
 
